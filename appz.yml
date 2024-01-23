@@ -37,4 +37,4 @@ properties:
         vault: REDIS_USER_PASSWD_VALUE
     REDIS_DEFAULT_PASSWD:
         vault: REDIS_DEFAULT_PASSWD_VALUE
-    revision : 17
+    revision : 18
