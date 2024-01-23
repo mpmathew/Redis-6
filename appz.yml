@@ -1,0 +1,40 @@
+app:
+    name: Redis
+    code: REDIS
+    notify: mpmathew@ecloudcontrol.com
+build:
+    version: 6.2
+    env: DEV
+    build_file: none
+    output_files: output/*.zip
+    image_template: redis-6.2
+    
+deploy:
+    context: mpmathew/DEV
+    replicas: 1
+    type: statefulset
+    ingress: none
+    port:
+    - 6379
+    
+volumes:
+  - claim: redis-data
+    mount: /appz/data
+    name: data
+    size: 10Gi
+    matchLabels: false
+  - claim: redis-backup
+    mount: /appz/backup
+    name: backup
+    size: 5Gi
+    matchLabels: false
+    
+properties:
+    
+    AUTH: False
+    REDIS_USER_NAME: APPZ
+    REDIS_USER_PASSWD: 
+        vault: REDIS_USER_PASSWD_VALUE
+    REDIS_DEFAULT_PASSWD:
+        vault: REDIS_DEFAULT_PASSWD_VALUE
+    revision : 17
