@@ -13,7 +13,6 @@ deploy:
     context: mpmathew/DEV
     replicas: 1
     type: statefulset
-    ingress: none
     port:
     - 6379
     
@@ -37,4 +36,4 @@ properties:
         vault: REDIS_USER_PASSWD_VALUE
     REDIS_DEFAULT_PASSWD:
         vault: REDIS_DEFAULT_PASSWD_VALUE
-    revision : 19
+    revision : 20
